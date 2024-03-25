@@ -169,6 +169,7 @@ export default new Vuex.Store({
               resolve(data);
             })
             .catch((error) => {
+                commit("SET_CONTAINER_ITEM", this.state.copyContainer);
               reject(new Error("Failed!"));
             });
         } catch (err) {
@@ -190,6 +191,9 @@ export default new Vuex.Store({
               );
             })
             .catch((error) => {
+               commit(
+                 "SET_THEME_VAR", this.state.duplicateThemingVars
+               );
               console.error("Error fetching data:", error);
             });
         } catch (err) {
