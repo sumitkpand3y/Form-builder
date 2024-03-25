@@ -63,6 +63,7 @@
   .el-input__inner,
   .el-radio__inner,
   .el-textarea__inner {
+    max-width: 200px;
     @include variable(border-color, #dcdfe6, --theme-input-border-color);
     @include variable(border-radius, 4, --theme-input-border-radius);
 
@@ -86,6 +87,7 @@
   .form_section {
     min-height: 100px;
     border: 1px;
+    margin-bottom: 10px;
     @include variable(border-color, #3f3e3e, --theme-section-border-color);
     @include variable(border-style, solid, --theme-section-border-style);
     @include variable(border-radius, 4, --theme-section-border-radius);
@@ -105,7 +107,7 @@
       );
       box-shadow: 0 0 0 2px var(--theme-input-shadow-color);
     }
-    @include variable(margin, 20, --theme-section-margin);
+    @include variable(margin, 15, --theme-section-margin);
   }
 
   .el-input-number__decrease {

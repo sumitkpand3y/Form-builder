@@ -73,8 +73,8 @@
                           class="form__label"
                           v-model="form.label"
                           v-show="form.hasOwnProperty('label')"
-                          >{{ form.label }}
-                          <span v-show="form.isRequired" class="label_require"
+                          ><span class="form_label-text">{{ form.label }}</span>
+                          <span v-if="form.isRequired" class="label_require"
                             >*</span
                           ></label
                         >
@@ -346,5 +346,16 @@ export default {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+}
+.form__actionitem--move {
+  height: 60px;
+}
+.form_label-text {
+  width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 </style>

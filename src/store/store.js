@@ -58,7 +58,7 @@ export default new Vuex.Store({
       sectionHoverBorderColor: "#c0c4cc",
       sectionFocusBorderColor: "#000000",
       sectionShadowColor: "#9D9D9D",
-      sectionMargin: "20",
+      sectionMargin: "15",
 
       buttonBackground: "#000000",
       buttonBorderColor: "#000000",
