@@ -38,6 +38,7 @@ export default {
   },
   methods: {
     createNewForm() {
+      this.getFormBuilderList()
       this.$router.push({path:"/Design"});
     },
     saveData() {
@@ -65,6 +66,13 @@ export default {
         if (response.status == 200) {
           console.log("response", response);
         }
+      } catch (error) {}
+    },
+    async getFormBuilderList() {
+      try {
+       await this.$store.dispatch(
+          "triggerSetCurrentData"
+        );
       } catch (error) {}
     },
     async triggerThemeVarAddApi(payload) {

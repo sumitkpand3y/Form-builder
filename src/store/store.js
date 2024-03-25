@@ -1,6 +1,4 @@
-
 import Vuex from "vuex";
-
 
 export default new Vuex.Store({
   state: {
@@ -28,12 +26,7 @@ export default new Vuex.Store({
       },
     ],
     collectionName: "formBuilder",
-    baseUrl: "https://generic-api-fgfd.onrender.com/v1",
-    getUrl: `https://generic-api-fgfd.onrender.com/v1/getAll/form-Builder`,
-    getAddUrl: `https://generic-api-fgfd.onrender.com/v1/addOne/form-Builder`,
-    getAddFormThemeUrl: `https://generic-api-fgfd.onrender.com/v1/addOne/form-Theme`,
-    getUpdateFormThemeUrl: `https://generic-api-fgfd.onrender.com/v1/updateOne/form-Theme`,
-    getThemeUrl: `https://generic-api-fgfd.onrender.com/v1/getAll/form-Theme`,
+    baseUrl: "https://generic-api-fgfd.onrender.com/v1/",
     activeForm: [],
     activeTabForFields: "elements",
     themingVars: {},
@@ -84,7 +77,7 @@ export default new Vuex.Store({
     async triggerAddFormSectionApi({ commit }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(this.state.getAddUrl, {
+          fetch(this.state.baseUrl + `addOne/form-Builder`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -105,7 +98,7 @@ export default new Vuex.Store({
     async triggerThemeVarAddApi({ commit }, payload) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(this.state.getAddFormThemeUrl, {
+          fetch(this.state.baseUrl + `addOne/form-Theme`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -126,7 +119,7 @@ export default new Vuex.Store({
     async triggerThemeVarUpdateApi({ commit }, { id, payload }) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(`https://generic-api-fgfd.onrender.com/v1/updateOne/form-Theme/${id}`, {
+          fetch(this.state.baseUrl + `updateOne/form-Theme/${id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -144,32 +137,21 @@ export default new Vuex.Store({
         }
       });
     },
-    async triggerUpdatedVizeInformationApi({ commit }, { payload, id }) {
-      return new Promise(async (resolve, reject) => {
-        try {
-          fetch(this.state.getUrl, { method: "PUT" })
-            .then((response) => {
-              resolve(response);
-            })
-            .catch((error) => {
-              reject(new Error("Failed!"));
-            });
-        } catch (err) {
-          reject(err);
-        }
-      });
+    async triggerSetCurrentData({ commit }) {
+     commit("SET_CONTAINER_ITEM", this.state.copyContainer);
     },
+
     async triggerFormBuilderGetAllApi({ commit }) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(this.state.getUrl, { method: "POST" })
+          fetch(this.state.baseUrl + `getAll/form-Builder`, { method: "POST" })
             .then((response) => response.json())
             .then((data) => {
               commit("SET_CONTAINER_ITEM", this.state.copyContainer);
               resolve(data);
             })
             .catch((error) => {
-              commit("SET_CONTAINER_ITEM", this.state.copyContainer);
+              // commit("SET_CONTAINER_ITEM", this.state.copyContainer);
               reject(new Error("Failed!"));
             });
         } catch (err) {
@@ -180,7 +162,7 @@ export default new Vuex.Store({
     async triggerGetFormThemeApi({ commit }) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(this.state.getThemeUrl, { method: "POST" })
+          fetch(this.state.baseUrl + `getAll/form-Theme`, { method: "POST" })
             .then((response) => response.json())
             .then((data) => {
               commit(
@@ -219,7 +201,7 @@ export default new Vuex.Store({
     async triggerGetFormBuilderFindOne({ commit }, id) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(`https://generic-api-fgfd.onrender.com/v1/getOne/form-Builder/${id}`, {
+          fetch(this.state.baseUrl + `getOne/form-Builder/${id}`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
