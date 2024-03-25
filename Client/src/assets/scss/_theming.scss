@@ -1,0 +1,135 @@
+// Mixin for css custom properties
+// eg: @include variable(background, blue, --theme-bg)
+@mixin variable($property, $fallback, $variable) {
+  #{$property}: $fallback;
+  #{$property}: var($variable);
+}
+
+// List all the theming styles
+//
+.wrapper--forms {
+  @include variable(font-family, Arial, --theme-global-font-family);
+  @include variable(color, #777777, --theme-global-font-color);
+  @include variable(font-size, 13, --theme-global-font-size);
+
+  a {
+    @include variable(color, #206c92, --theme-global-link-color);
+  }
+  // Typography
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.17em;
+  }
+  h4 {
+    font-size: 1.12em;
+  }
+  h5 {
+    font-size: 0.83em;
+  }
+
+  .form-field-component {
+    justify-content: space-around;
+    align-items: center;
+    @include variable(display, flex, --theme-global-alignment);
+    @include variable(text-align, start, --theme-global-text-alignment);
+  }
+
+  .form__label {
+    display: block;
+
+    @include variable(color, #cccccc, --theme-primary-color);
+    @include variable(font-weight, #cccccc, --theme-label-font-weight);
+    @include variable(font-size, 13, --theme-label-font-size);
+    @include variable(margin-bottom, 10, --theme-label-margin-bottom);
+  }
+
+  .form__helpblock {
+    display: block;
+
+    @include variable(color, #cccccc, --theme-help-text-color);
+    @include variable(font-size, 12, --theme-help-text-font-size);
+    @include variable(margin-top, 2, --theme-help-text-margin-top);
+  }
+  .section_input-color .el-input__inner {
+    border-color: white;
+    background-color: rgba(238, 233, 233, .6);
+  }
+
+  .el-input__inner,
+  .el-radio__inner,
+  .el-textarea__inner {
+    height: 40px;
+    @include variable(border-color, #dcdfe6, --theme-input-border-color);
+    @include variable(border-radius, 4, --theme-input-border-radius);
+
+    &:hover {
+      @include variable(
+        border-color,
+        #dcdfe6,
+        --theme-input-hover-border-color
+      );
+    }
+
+    &:focus {
+      @include variable(
+        border-color,
+        #dcdfe6,
+        --theme-input-focus-border-color
+      );
+      box-shadow: 0 0 0 2px var(--theme-input-shadow-color);
+    }
+  }
+  .form_section {
+    min-height: 100px;
+    border: 1px;
+    @include variable(border-color, #3f3e3e, --theme-section-border-color);
+    @include variable(border-style, solid, --theme-section-border-style);
+    @include variable(border-radius, 4, --theme-section-border-radius);
+    &:hover {
+      @include variable(
+        border-color,
+        #dcdfe6,
+        --theme-section-hover-border-color
+      );
+    }
+
+    &:focus {
+      @include variable(
+        border-color,
+        #dcdfe6,
+        --theme-section-focus-border-color
+      );
+      box-shadow: 0 0 0 2px var(--theme-input-shadow-color);
+    }
+    @include variable(margin, 20, --theme-section-margin);
+  }
+
+  .el-input-number__decrease {
+    @include variable(border-top-left-radius, 4, --theme-input-border-radius);
+    @include variable(
+      border-bottom-left-radius,
+      4,
+      --theme-input-border-radius
+    );
+  }
+
+  .el-input-number__increase {
+    @include variable(border-top-right-radius, 4, --theme-input-border-radius);
+    @include variable(
+      border-bottom-right-radius,
+      4,
+      --theme-input-border-radius
+    );
+  }
+
+  .form__button {
+    @include variable(background-color, black, --theme-button-background);
+    @include variable(border-color, black, --theme-button-border-color);
+    @include variable(color, white, --theme-button-color);
+  }
+}
