@@ -28,12 +28,12 @@ export default new Vuex.Store({
       },
     ],
     collectionName: "formBuilder",
-    baseUrl: "http://localhost:7050/v1/",
-    getUrl: `http://localhost:7050/v1/getAll/form-Builder`,
-    getAddUrl: `http://localhost:7050/v1/addOne/form-Builder`,
-    getAddFormThemeUrl: `http://localhost:7050/v1/addOne/form-Theme`,
-    getUpdateFormThemeUrl: `http://localhost:7050/v1/updateOne/form-Theme`,
-    getThemeUrl: `http://localhost:7050/v1/getAll/form-Theme`,
+    baseUrl: "https://generic-api-fgfd.onrender.com/v1",
+    getUrl: `https://generic-api-fgfd.onrender.com/v1/getAll/form-Builder`,
+    getAddUrl: `https://generic-api-fgfd.onrender.com/v1/addOne/form-Builder`,
+    getAddFormThemeUrl: `https://generic-api-fgfd.onrender.com/v1/addOne/form-Theme`,
+    getUpdateFormThemeUrl: `https://generic-api-fgfd.onrender.com/v1/updateOne/form-Theme`,
+    getThemeUrl: `https://generic-api-fgfd.onrender.com/v1/getAll/form-Theme`,
     activeForm: [],
     activeTabForFields: "elements",
     themingVars: {},
@@ -126,7 +126,7 @@ export default new Vuex.Store({
     async triggerThemeVarUpdateApi({ commit }, { id, payload }) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(`http://localhost:7050/v1/updateOne/form-Theme/${id}`, {
+          fetch(`https://generic-api-fgfd.onrender.com/v1/updateOne/form-Theme/${id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -169,7 +169,7 @@ export default new Vuex.Store({
               resolve(data);
             })
             .catch((error) => {
-                commit("SET_CONTAINER_ITEM", this.state.copyContainer);
+              commit("SET_CONTAINER_ITEM", this.state.copyContainer);
               reject(new Error("Failed!"));
             });
         } catch (err) {
@@ -191,9 +191,7 @@ export default new Vuex.Store({
               );
             })
             .catch((error) => {
-               commit(
-                 "SET_THEME_VAR", this.state.duplicateThemingVars
-               );
+              commit("SET_THEME_VAR", this.state.duplicateThemingVars);
               console.error("Error fetching data:", error);
             });
         } catch (err) {
@@ -221,7 +219,7 @@ export default new Vuex.Store({
     async triggerGetFormBuilderFindOne({ commit }, id) {
       return new Promise(async (resolve, reject) => {
         try {
-          fetch(`http://localhost:7050/v1/getOne/form-Builder/${id}`, {
+          fetch(`https://generic-api-fgfd.onrender.com/v1/getOne/form-Builder/${id}`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
