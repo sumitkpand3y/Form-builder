@@ -73,10 +73,10 @@
                           class="form__label"
                           v-model="form.label"
                           v-show="form.hasOwnProperty('label')"
-                          ><span class="form_label-text">{{ form.label }}</span>
-                          <span v-if="form.isRequired" class="label_require"
+                          ><span class="form_label-text">{{ form.label }}  <span v-if="form.isRequired" class="label_require"
                             >*</span
-                          ></label
+                          ></span>
+                         </label
                         >
 
                         <component
