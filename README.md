@@ -12,6 +12,9 @@ A sample drag & drop form builder project that made with Vue.js and Element UI (
 # install dependencies
 npm install
 
+# if Not able to install dependencies try this command :
+npm install --legacy-peer-deps
+
 # serve with hot reload at localhost:8080
 npm run dev
 
